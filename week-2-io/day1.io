@@ -1,3 +1,5 @@
+// Io, imperative prototyped language
+
 "Hi ho, Io" print         // receivers on the left and messages on the right
 Vehicle := Object clone   // vehicle is not a class, it's an object based on the object prototype
 Vehicle description := "Something to take you places" // creates a slot called description

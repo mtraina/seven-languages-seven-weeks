@@ -1,3 +1,5 @@
+# Ruby, imperative object oriented language
+
 # my times
 class Fixnum
   def my_times

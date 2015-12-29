@@ -1,0 +1,8 @@
+// Prolog, declarative logical language
+
+Like SQL, Prolog has two parts: one to express the data and one to query the data.
+In Prolog, the data is in the form of logical rules.
+These are the building blocks:
+- Facts. A fact is a basic assertion about some world. (Babe is a pig; pigs like mud.)
+- Rules. A rule is an inference about the facts in that world. (An animal likes mud if it is a pig.)
+- Query. A query is a question about that world. (Does Babe like mud?)
