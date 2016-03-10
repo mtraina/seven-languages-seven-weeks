@@ -51,3 +51,13 @@ What = [tiny,bubbles]
 % list substraction
 append([dessert_topping], Who, [dessert_topping, floor_wax]).
 ```
+
+<h5>Concatenate</h5>
+<b>concat.pl</b> contains two rules:
+```prolog
+concatenate([], List, List).
+concatenate([Head|Tail1], List, [Head|Tail2]) :-
+  concatenate(Tail1, List, Tail2).
+```
+* the first rule return list when concatenating list with an empty one
+* the second rule is saying that concatenating list1 and list2 gives you list3 if the heads of list1 and list3 are the same and concatenating the tail of list1 and list2 gives you the tail of list3.
