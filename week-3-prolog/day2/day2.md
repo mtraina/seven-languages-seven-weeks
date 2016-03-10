@@ -26,12 +26,18 @@ With lists (not tuples) is possible to unify as head-tail where head is the firs
 ```
 
 <h4>Lists and math</h4>
-In <b>list_math.pl</b> we define two rules for sum:
+In <b>list_math.pl</b> we define two rules for count:
 ```prolog
-sum(0, []).
-sum(Total, [Head|Tail]) :- sum(Sum, Tail), Total is Head + Sum.
+count(0, []).
+count(Count, [Head|Tail]) :- count(TailCount, Tail), Count is TailCount + 1.
 ```
-* The first rule is saying that the sum is 0 for an empty list.
-* The second rule is saying if the
-
-For count(What, [1]).
+If we execute
+```prolog
+count(What, [1]).
+```
+The unification happens for the second rule binding What to Count, 1 to Head and [] to Tail.<br>After unification execute
+```prolog
+count(TailCount, [])
+```
+And we bind it to the first rule, so we have 0.<br/>
+As last thing we evaluate Count is TailCount + 1 = 0 + 1 = 1
