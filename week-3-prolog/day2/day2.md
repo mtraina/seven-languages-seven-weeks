@@ -41,3 +41,13 @@ count(TailCount, [])
 ```
 And we bind it to the first rule, so we have 0.<br/>
 As last thing we evaluate Count is TailCount + 1 = 0 + 1 = 1
+
+<h5>Lists</h5>
+```prolog
+% list builder
+append([tiny], [bubbles], What).
+What = [tiny,bubbles]
+
+% list substraction
+append([dessert_topping], Who, [dessert_topping, floor_wax]).
+```
