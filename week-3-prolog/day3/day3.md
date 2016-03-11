@@ -49,11 +49,38 @@ valid([Row1, Row2, Row3, Row4,
 ```
 Now we can solve the sudoku with the following commands
 ```prolog
-['sudoku4.pl']
+['sudoku4.pl'].
 
 sudoku([_, _, 2, 3,
         _, _, _, _,
         _, _, _, _,
         3, 4, _, _],
         Solution).
+```
+
+<h1>Eight queens</h1>
+Each <b>queen</b> can be expressed as a tuple (Row,Col) and a <b>board</b> as a list of tuples.
+
+The rules of the game are:
+* there are 8 queens in a board
+* each queen has a row
+* no queens can share the same row
+* no queens can share the same column
+* no queen can share the same diagonals
+
+Let's validate the queens
+```prolog
+valid_queen((Row, Col)) :-
+  Range = [1,2,3,4,5,6,7,8],
+  member(Row, Range), member(Col, Range).
+
+valid_board([]).
+valid_board([Head|Tail]) :- valid_queen(Head), valid_board(Tail).
+```
+
+At this point we can solve the game with the next commands
+```prolog
+['queens.pl'].
+
+eight_queens([(1, A), (2, B), (3, C), (4, D), (5, E), (6, F), (7, G), (8, H)]).
 ```
