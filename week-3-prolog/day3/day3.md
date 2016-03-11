@@ -66,7 +66,7 @@ The rules of the game are:
 * each queen has a row
 * no queens can share the same row
 * no queens can share the same column
-* no queen can share the same diagonals
+* no queens can share the same diagonals
 
 Let's validate the queens
 ```prolog
@@ -76,6 +76,27 @@ valid_queen((Row, Col)) :-
 
 valid_board([]).
 valid_board([Head|Tail]) :- valid_queen(Head), valid_board(Tail).
+```
+
+Then we add the implementation of the fact that no queens can share the same row, column or diagonal.
+```prolog
+rows([], []).
+rows([(Row, _)|QueensTail], [Row|RowsTail]) :-
+  rows(QueensTail, RowsTail).
+
+cols([], []).
+cols([(_, Col)|QueensTail], [Col|ColsTail]) :-
+  cols(QueensTail, ColsTail).
+
+diags1([], []).
+diags1([(Row, Col)|QueensTail], [Diagonal|DiagonalsTail]) :-
+  Diagonal is Col - Row,
+  diags1(QueensTail, DiagonalsTail).
+
+diags2([], []).
+diags2([(Row, Col)|QueensTail], [Diagonal|DiagonalsTail]) :-
+  Diagonal is Col + Row,
+  diags2(QueensTail, DiagonalsTail).
 ```
 
 At this point we can solve the game with the next commands
