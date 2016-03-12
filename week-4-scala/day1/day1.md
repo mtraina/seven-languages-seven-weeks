@@ -73,3 +73,9 @@ person: (String, String) = (Elvis,Presley)
 scala> person._1
 res0: String = Elvis
 ```
+
+<h3>Classes</h3>
+<b>Compass.scala</b> is an example of simple class with default constructor and few methods, just run it with the following command
+```bash
+scala compass.scala
+```
