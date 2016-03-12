@@ -15,7 +15,7 @@ Characteristics of a functional language are:
 * a function will return <u>always</u> the same output, given the same input
 * functional programs avoid changing state or mutating data
 
-<h3>Language details</h3>
+<h3>Types</h3>
 Nil is an empty list.
 ```scala
 scala> Nil
@@ -39,3 +39,21 @@ x = "2"; // error!
 x = 1
 x = "2" # no error
 ```
+<h3>Loops</h3>
+The while loop is similar to the Java one.  
+The for loop can follow either a Java style (with small changes) or a Ruby one, passing a lambda to the foreach method.
+```scala
+// Java style iteration
+def forLoop {
+    for(i <- 0 until args.length) {
+        println(args(i))
+    }
+}
+// Ruby style iteration
+def forLoop {
+    args.foreach { arg =>
+      println(arg)
+    }
+}
+```
+<h3>Range
