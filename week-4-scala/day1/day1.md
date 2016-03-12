@@ -39,6 +39,7 @@ x = "2"; // error!
 x = 1
 x = "2" # no error
 ```
+
 <h3>Loops</h3>
 The while loop is similar to the Java one.  
 The for loop can follow either a Java style (with small changes) or a Ruby one, passing a lambda to the foreach method.
@@ -56,4 +57,19 @@ def forLoop {
     }
 }
 ```
-<h3>Range
+<h3>Ranges</h3>
+Scala supports first-class ranges
+```scala
+scala> val range = 0 until 10
+range: scala.collection.immutable.Range = Range(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+```
+
+<h3>Tuples</h3>
+A tuple is a fixed-length set of objects where those object can be of different type.
+```scala
+scala> val person = ("Elvis", "Presley")
+person: (String, String) = (Elvis,Presley)
+
+scala> person._1
+res0: String = Elvis
+```
