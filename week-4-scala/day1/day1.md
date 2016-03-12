@@ -15,7 +15,7 @@ Characteristics of a functional language are:
 * a function will return <u>always</u> the same output, given the same input
 * functional programs avoid changing state or mutating data
 
-<h3>Types</h3>
+<h3>Language details</h3>
 Nil is an empty list.
 ```scala
 scala> Nil
