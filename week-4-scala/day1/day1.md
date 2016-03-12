@@ -14,3 +14,28 @@ Characteristics of a functional language are:
 * a function always returns a value
 * a function will return <u>always</u> the same output, given the same input
 * functional programs avoid changing state or mutating data
+
+<h3>Types</h3>
+Nil is an empty list.
+```scala
+scala> Nil
+res0: scala.collection.immutable.Nil.type = List()
+```
+
+<h3>Strong, weak, static and dynamic typing</h3>
+* A language is <b>strong typed</b> when it can detect when two types are compatible (e.g. Java, Ruby).
+```ruby
+x = "1"
+y = 2 + x # error!
+```
+* It is <b>weak typed</b> when the compiler doesn't necessarily care about the type of the data in a memory location (i.e. integer, string). Examples of this kind of languages are Assembly or C.
+* A language is <b>static typed</b> when you (have to) define it's explicitly, e.g. in Java.
+```java
+int x = 1;
+x = "2"; // error!
+```
+* It is <b>dynamically typed</b> when you can change the type of the variable, like in Ruby.
+```ruby
+x = 1
+x = "2" # no error
+```
