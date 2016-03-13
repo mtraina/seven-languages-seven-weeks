@@ -15,13 +15,6 @@ Characteristics of a functional language are:
 * a function will return <u>always</u> the same output, given the same input
 * functional programs avoid changing state or mutating data
 
-<h3>Types</h3>
-Nil is an empty list.
-```scala
-scala> Nil
-res0: scala.collection.immutable.Nil.type = List()
-```
-
 <h3>Strong, weak, static and dynamic typing</h3>
 * A language is <b>strong typed</b> when it can detect when two types are compatible (e.g. Java, Ruby).
 ```ruby
