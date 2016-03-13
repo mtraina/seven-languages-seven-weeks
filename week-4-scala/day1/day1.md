@@ -79,3 +79,41 @@ res0: String = Elvis
 ```bash
 scala compass.scala
 ```
+
+<h3>Companion objects</h3>
+Class methods (like the static methods in Java) has to be defined using the object keyword
+```scala
+object TrueRing {
+  def rule = println("To rule them all")
+}
+```
+
+<h3>Inheritance</h3>
+For extending a class from another is pretty similar to Java with the main difference that <b>override</b> is a mandatory keyword.
+```scala
+class Person(val name: String){
+  def talk:(message: String) = println(name + " says " + message)
+}
+
+class Employee(override val name: String
+                        val number: Int) extends Person(name){
+  override def talk(message: String){
+    println(name + " with number " + number + " says " + message)
+  }
+}
+```
+
+<h4>Traits</h4>
+A trait is like an interface with partial implementation.
+```scala
+class Person(val name:String)
+
+trait Nice {
+  def greet() = println("Howdily doodily.")
+}
+
+class Character(override val name:String) extends Person(name) with Nice
+
+val flanders = new Character("Ned")
+flanders.greet
+```
