@@ -92,4 +92,23 @@ words.forall(word => word.size > 1)
 
 // exists => boolean
 words.exists(word => word.size > 4)
+
+// sort
+words.sortWith((s, t) => s.charAt(0) < t.charAt(0))
 ```
+
+<h4>Fold left</h4>
+With fold left you pass an initial value and a function to a collection: the function will be applied, starting from the initial value, to each element of the collection to calculate the final result.  
+It has two syntactically different versions.
+
+```scala
+val list = List(1, 2, 3)
+
+// version 1
+val sum = (0 /: list) {(sum, i) => sum + i}
+
+// version 2
+list.foldLeft(0)((sum, value) => sum + value)
+```
+
+The result is obviously the same, 6, but the second version uses <b>currying</b>, as noticeable from the two parameters lists.
