@@ -59,4 +59,37 @@ Maps are key-value pairs.
 // map constrution
 scala> val ordinals = Map(0 -> "zero", 1 -> "one", 2 -> "two")
 ordinals: scala.collection.immutable.Map[Int,String] = Map(0 -> zero, 1 -> one, 2 -> two)
+
+// get value by key
+scala> ordinals(2)
+res3: String = two
+```
+
+<h3>Collections and functions</h3>
+You can use high-order functions to work with collections, here some example.
+
+<h4>Foreach</h4>
+```scala
+val list = List("a", "b", "c")
+list.foreach(letter => println(letter))
+```
+<h4>Count, map, filter and others</h4>
+Pretty common and useful functions
+```scala
+val words = List("peg", "al", "bud", "kelly")
+
+// count
+words.count(word => word.size > 2)
+
+// filter
+words.filter(word => word.size > 2)
+
+// map
+words.map(word => word.size)
+
+// forall => boolean
+words.forall(word => word.size > 1)
+
+// exists => boolean
+words.exists(word => word.size > 4)
 ```
