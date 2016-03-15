@@ -67,3 +67,6 @@ The primary constructs for handling concurrency in Scala are actors and message 
 
 <h4>Actors</h4>
 Actors have pool of threads and queues. When you send a message to an actor, you place an object on its queue. The actor reads the message and take action.
+
+In the file <b>kids.scala</b> we define two singletons (object in Scala) that act as messages.  
+The Kid class is an actor so it runs from a pool of threads and get messages in a queue: it will process the each message sequentially.
