@@ -69,4 +69,49 @@ The primary constructs for handling concurrency in Scala are actors and message 
 Actors have pool of threads and queues. When you send a message to an actor, you place an object on its queue. The actor reads the message and take action.
 
 In the file <b>kids.scala</b> we define two singletons (object in Scala) that act as messages.  
-The Kid class is an actor so it runs from a pool of threads and get messages in a queue: it will process the each message sequentially.
+The Kid class is an actor so it runs from a pool of threads and get messages in a queue: it will process the each message sequentially. The pattern matching allows us to match the appropriate message.
+
+The application is actually concurrent, so the order of the messages can change.
+
+<h4>Concurrency in action</h4>
+The file <b>sizer.scala</b> contains an application that computes the size of few web pages.
+
+In the first part of the application, we define an object with a method for computing the size of a page, given the address.
+```scala
+object PageLoader {
+  def getPageSize(url : String) = Source.fromURL(url).mkString.length
+}
+```
+Then we define a method for timing each web request
+```scala
+def timeMethod(method: () => Unit) = {
+  val start = System.nanoTime
+  method()
+  val end = System.nanoTime
+  println("Method took " + (end - start)/1000000000.0 + " seconds.")
+}
+```
+The next step is to create two methods: the first for executing the web request sequentially and the second to do it asynchronously.  
+```scala
+def getPageSizeSequentially() = {
+  for(url <- urls) {
+    println("Size for " + url + ": " + PageLoader.getPageSize(url))
+  }
+}
+
+def getPageSizeConcurrently() = {
+  val caller = self
+
+  for(url <- urls) {
+    actor {
+      caller ! (url, PageLoader.getPageSize(url))
+    }
+  }
+
+  for(i <- 1 to urls.size) {
+    receive {
+      case (url, size) => println("Size for " + url + ": " + size)
+    }
+  }
+}
+```
