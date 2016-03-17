@@ -81,3 +81,13 @@ c(basic).
 % run
 basic:mirror(smiling_mug).
 ```
+
+<h3>Recursion</h3>
+Using pattern matching and recursion together is either elegant and powerful: for example the code for calculating the factorial is very fast.
+```erlang
+-module(yet_again).
+-export([another_factorial/1]).
+
+another_factorial(0) -> 1;
+another_factorial(N) -> N * another_factorial(N-1).
+```
