@@ -27,3 +27,19 @@ Is is possible to assign functions to variables and pass them around. The keywor
 Negate = fun(I) -> -I end.
 Negate(1). % -1
 ```
+
+<h4>Lists and high-order functions</h4>
+The module [lists](http://erlang.org/doc/man/lists.html) exposes functions that are useful to manage their content: functions like <b>foreach</b> iterate them whilst other functions, e.g. <b>filter, map</b>, returns other lists starting from the content of the original one.
+
+Here an example of <foreach> used for printing a list of numbers.
+```erlang
+% create a list of numbers
+Numbers = [1, 2, 3, 4].
+
+% pass an anonymous function to foreach for printing.
+lists:foreach(fun(Number) -> io:format("~p~n", [Number]) end, Numbers).
+
+% same effect with a more readable approach
+Print = fun(N) -> io:format("~p~n", [N]) end.
+lists:foreach(Print, Numbers).
+```
