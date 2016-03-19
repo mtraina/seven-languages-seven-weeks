@@ -20,3 +20,10 @@ if
   true -> zero
 end.
 ```
+
+<h3>Anonymous functions</h3>
+Is is possible to assign functions to variables and pass them around. The keyword <b>fun</b> is used for defining the anonymous function that takes, in this case, one argument.
+```erlang
+Negate = fun(I) -> -I end.
+Negate(1). % -1
+```
