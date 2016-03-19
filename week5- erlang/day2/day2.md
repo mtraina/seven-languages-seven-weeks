@@ -31,7 +31,8 @@ Negate(1). % -1
 <h4>Lists and high-order functions</h4>
 The module [lists](http://erlang.org/doc/man/lists.html) exposes functions that are useful to manage their content: functions like <b>foreach</b> iterate them whilst other functions, e.g. <b>filter, map</b>, returns other lists starting from the content of the original one.
 
-Here an example of <foreach> used for printing a list of numbers.
+<h5>Foreach</h5>
+Here an example of <b>foreach</b> used for printing a list of numbers.
 ```erlang
 % create a list of numbers
 Numbers = [1, 2, 3, 4].
@@ -42,4 +43,22 @@ lists:foreach(fun(Number) -> io:format("~p~n", [Number]) end, Numbers).
 % same effect with a more readable approach
 Print = fun(N) -> io:format("~p~n", [N]) end.
 lists:foreach(Print, Numbers).
+```
+
+<h5>Map</h5>
+The following example uses <b>map</b> for creating a new list starting from one and a function that has to be applied to all the elements of it.
+```erlang
+lists:map(fun(X) -> X + 1 end, Numbers).
+% [2,3,4,5]
+```
+
+<h5>Filter</h5>
+Filter can be used for eliminate elements from a list that do not satisfy a predicate.
+```erlang
+% define a predicate
+Small = fun(X) -> X < 3 end.
+
+% filter the list of numbers using the predicate
+lists:filter(Small, Numbers).
+% [1, 2]
 ```
