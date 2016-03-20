@@ -80,3 +80,8 @@ lists:foldl(fun(X, Sum) -> X + Sum end, 0, Numbers).
 ```
 
 <h4>List construction</h4>
+Is it possible to create an immutable list starting from another one. The file <b>double.erl</b> contains the code for creating a new list doubling all the elements, one by one, of a given list of numbers.
+```erlang
+c(double).
+double:double_all([1, 2, 3]).
+```
