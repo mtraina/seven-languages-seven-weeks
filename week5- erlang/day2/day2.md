@@ -78,3 +78,5 @@ Function useful to rolling up the results of a function across a list.
 Numbers.  % [1,2,3,4]
 lists:foldl(fun(X, Sum) -> X + Sum end, 0, Numbers).
 ```
+
+<h4>List construction</h4>
