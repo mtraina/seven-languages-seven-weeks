@@ -62,3 +62,19 @@ Small = fun(X) -> X < 3 end.
 lists:filter(Small, Numbers).
 % [1, 2]
 ```
+
+<h5>Other functions using predicates</h5>
+The following are functions that works using predicates to check the list.
+```erlang
+lists:all(Small, [0, 1, 2]).             % true
+lists:any(Small, [0, 1, 2, 3]).          % true
+lists:takewhile(Small, [1, 2, 1, 4, 1]). % [1,2,1]
+lists:dropwhile(Small, [1, 2, 1, 4, 1]). % [4,1]
+```
+
+<h5>Foldl</h5>
+Function useful to rolling up the results of a function across a list.
+```erlang
+Numbers.  % [1,2,3,4]
+lists:foldl(fun(X, Sum) -> X + Sum end, 0, Numbers).
+```
