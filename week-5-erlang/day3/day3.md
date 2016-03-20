@@ -48,3 +48,8 @@ Gun ! 1.  % click
 Gun ! 3.  % bang
 Gun ! 4.  % nothing, the process is dead
 ```
+
+We can check if the process is alive with this command:
+```erlang
+erlang:is_process_alive(Gun).
+```
