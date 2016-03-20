@@ -35,3 +35,16 @@ translate_service:translate(Translator, "blanca").
 Erlang provides a way to enforce reliability linking processes together: when one of the processes dies, it sends a signal to its twin that will react accordingly.
 
 <h5>Spawning a linked process</h5>
+The following application is a kind of Russian roulette: if the number passed id 3, the process dies.
+```erlang
+% compile
+c(roulette).
+
+% start the process
+Gun = spawn(fun roulette:loop/0).
+
+% send messages
+Gun ! 1.  % click
+Gun ! 3.  % bang
+Gun ! 4.  % nothing, the process is dead
+```
