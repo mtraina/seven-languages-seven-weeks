@@ -85,3 +85,25 @@ Is it possible to create an immutable list starting from another one. The file <
 c(double).
 double:double_all([1, 2, 3]).
 ```
+
+<h4>List comprehensions</h4>
+List comprehension is a powerful way to do multiple transformations with a concise syntax then <b>map</b>.
+```erlang
+% define a Fibonacci's list
+Fibs = [1, 1, 2, 3, 5].
+
+% define a function that doubles a number
+Double = fun(X) -> X * 2 end.
+
+% list comprehension
+[Double(X) || X <- Fibs].
+
+% or defining function and list inline
+[X * 2 || X <- [1, 1, 2, 3, 5]].
+```
+
+Here an example where we define a list that represent a catalog, then we calculate the taxes on the product of the catalog as the 8% of the price per unit times the quantity.
+```erlang
+Cart = [{pencil, 4, 0.25}, {pen, 1, 1.20}, {paper, 2, 0.20}].
+CartWithTax = [{Prod, Qt, Price, Qt * Price * 0.08} || {Prod, Qt, Price} <- Cart].
+```
