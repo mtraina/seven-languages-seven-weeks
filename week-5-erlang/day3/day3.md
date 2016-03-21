@@ -53,3 +53,27 @@ We can check if the process is alive with this command:
 ```erlang
 erlang:is_process_alive(Gun).
 ```
+
+<h6>Monitor a process</h6>
+We now create a monitor to check if a process died. The file <b>coroner.erl</b> contains the code for it.
+
+```erlang
+% compile
+c(roulette).
+c(coroner).
+
+% start roulette and coroner
+Roulette = spawn(fun roulette:loop/0).
+Coroner = spawn(fun coroner:loop/0).
+```
+Now we send a message to the coroner, saying which process PID to monitor. The word monitor is in the case of the parameter just an atom.
+```erlang
+% send a message to the coroner
+Coroner ! {monitor, Roulette}.
+```
+It's time to send the messages to roulette and after its death, the coroner will react and print a log related to it.
+```erlang
+Roulette ! 1. % click
+Roulette ! 3. % bang
+% The shooter <0.45.0> died with reason {roulette,die,at,{14,7,51}}. Start another one.
+```
