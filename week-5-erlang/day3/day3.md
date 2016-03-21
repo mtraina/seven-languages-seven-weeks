@@ -77,3 +77,29 @@ Roulette ! 1. % click
 Roulette ! 3. % bang
 % The shooter <0.45.0> died with reason {roulette,die,at,{14,7,51}}. Start another one.
 ```
+
+<h6>Restarting a process</h6>
+Instead of just monitoring a process we can take action in case it dies. The file <b>doctor.erl</b> shows how to react to the end of a process and start a new one.
+```erlang
+% compile
+c(doctor).
+
+% start a doctor
+Doc = spawn(fun doctor:loop/0).
+
+% send the new message to the doctor
+Doc ! new
+
+% doctor creates a roulette process and we send a message to it
+roulette ! 1. % click
+
+% the roulette process dies
+roulette ! 3. % bang
+
+% the doctor is notified of the death of the roulette process and it starts a new one
+The shooter <0.44.0> died with reason {roulette,die,at,{14,17,38}}. Restarting.
+Creating and monitoring process.
+
+% send a message to roulette
+roulette ! 1. % click
+```
