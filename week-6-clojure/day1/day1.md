@@ -90,3 +90,28 @@ A map is a key-value pair. A word preceded with : is a symbol (like atoms in Erl
 ;; create a new map adding an element to an existing one
 (assoc {:one 1} :two 2) ; {:two 2, :one 1}
 ```
+
+### Functions
+To define a function Clojure uses the keyword **defn**.
+```clojure
+;; create the function
+(defn force-it [] (str "Use the force," "Luke."))
+
+;; invoke the function
+(force-it)
+```
+
+It is possible to add a description to the function and see it in the documentation.
+
+```clojure
+;; define the function with a description
+(defn force-it
+   "The first function a young Jedi needs"
+   []
+   (str "Use the force," "Luke"))
+
+;; recall the documentation of the function
+(doc force-it)
+```
+
+(doc force-it)
