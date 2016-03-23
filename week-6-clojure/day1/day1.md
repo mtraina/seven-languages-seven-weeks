@@ -16,4 +16,18 @@ A very useful function is **str** that convert values to string; it can also con
 ```
 
 ### Lists, maps and vectors
-Lists are an ordered collection of elements
+Lists are an ordered collection of elements. In idiomatic Clojure there are used for code whilst vectors are used for data.
+```clojure
+;; list creation
+(list 1 2 3)  ; (1 2 3)
+'(1 2 3)      ; (1 2 3)
+
+(first '(:r2d2 :c3po))  ; :r2d2
+(last '(:r2d2 :c3po))   ; :c3po
+
+;; rest (tail)
+(rest '(:r2d2 :c3po))   ; (:c3po)
+
+;; list concatenation
+(cons :battle-droid '(:r2d2 :c3po)) ; (:battle-droid :r2d2 :c3po)
+```
