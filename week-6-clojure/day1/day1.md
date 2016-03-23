@@ -143,3 +143,22 @@ Let is an operator for binding a variable to a value.
 (let [{name :name} person]
   (str "The person's name is " name)) ; "The person's name is Jabba"
 ```
+
+#### Anonymous functions
+You can define anonymous function using the construct **fn**. Here an example of a function written with the usual approach and as anonymous.
+```clojure
+;; define a vector of people
+(def people ["Lea", "Han Solo"])
+
+;; create a function that doubles the count of the elements of a vector
+(defn twice-count [w] (* 2 (count w)))
+
+;; map the doubles of the counts
+(map twice-count people)  ;(6 16)
+
+;; same as before in one line with an anonymous function
+(map (fn [w] (* 2 (count w))) people) ; (6 16)
+
+;; shorter form
+(map #(* 2 (count %)) people) ; (6 16)
+```
