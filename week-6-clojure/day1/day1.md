@@ -132,3 +132,14 @@ Instead of doing this we can bind the parameter to the second element of the lin
 (defn line-end [[_ second]] second)
 (line-end line) ; [10 20]
 ```
+
+#### Let
+Let is an operator for binding a variable to a value.
+```clojure
+;; define a map
+(def person {:name "Jabba" :profession "Gangster"})
+
+;; set the value of the key in the variable
+(let [{name :name} person]
+  (str "The person's name is " name)) ; "The person's name is Jabba"
+```
