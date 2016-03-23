@@ -114,4 +114,21 @@ It is possible to add a description to the function and see it in the documentat
 (doc force-it)
 ```
 
-(doc force-it)
+### Bindings
+The process of assigning parameters based on the inbound arguments is called **binding**.
+For example we can define a line as a vector of vectors and a function that binds its parameter to it. Our function is returning the last part of the line.  
+```clojure
+;; define a line as a vector of vectors
+(def line [[0 0] [10 20]])
+
+;; create a function that returns the last part of the line
+(defn line-end [ln] (last  ln))
+(line-end line) ; [10 20]
+```
+
+Instead of doing this we can bind the parameter to the second element of the line directly, this concept is called **destructuring** because we get only the part we need from an existing data structure.
+```clojure
+;; this function binds the parameter to the second element of the line
+(defn line-end [[_ second]] second)
+(line-end line) ; [10 20]
+```
