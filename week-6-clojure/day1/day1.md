@@ -169,3 +169,9 @@ Apply applies a function to an argument list. The two following functions are an
 (apply f ’(x y))
 (f x y)
 ```
+
+##### Filter
+Filter only returnrs the elements of a sequence that satisfy a predicate.
+```clojure
+(filter odd? '(1 2 3)) ; (1 3)
+```
