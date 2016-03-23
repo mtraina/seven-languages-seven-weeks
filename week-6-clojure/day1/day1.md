@@ -162,3 +162,10 @@ You can define anonymous function using the construct **fn**. Here an example of
 ;; shorter form
 (map #(* 2 (count %)) people) ; (6 16)
 ```
+
+##### Apply
+Apply applies a function to an argument list. The two following functions are analogous.
+```clojure
+(apply f ’(x y))
+(f x y)
+```
