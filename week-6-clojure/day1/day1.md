@@ -48,3 +48,23 @@ Vectors are, like lists, an ordered collection, but optimized for random access.
 ;; vector concatenation
 (concat [:darth-vader] [:darth-maul]) ; (:darth-vader :darth-maul)
 ```
+
+### Sets
+It's an unordered collection of elements.
+```clojure
+;; set creation
+#{:x-wing :y-wing :tie-fighter} ; #{:x-wing :y-wing :tie-fighter}
+
+;; save the set in a variable
+(def spacecraft #{:x-wing :y-wing :tie-fighter})
+
+;; count
+(count spacecraft)  ; 3
+(sort spacecraft)   ; (:tie-fighter :x-wing :y-wing)
+
+;; merge two sets
+(clojure.set/union #{:skywalker} #{:vader}) ; #{:skywalker :vader}
+
+;; diffrence
+(clojure.set/difference #{1 2 3} #{2})      ; #{1 3}
+```
