@@ -68,3 +68,25 @@ It's an unordered collection of elements.
 ;; diffrence
 (clojure.set/difference #{1 2 3} #{2})      ; #{1 3}
 ```
+
+### Maps
+A map is a key-value pair. A word preceded with : is a symbol (like atoms in Erlang).
+```clojure
+;; map creation
+{:darth-vader "obi wan", :luke "yoda"} ; {:darth-vader "obi wan", :luke "yoda"}
+
+;; save a map in a variable
+(def mentors {:darth-vader "obi wan", :luke "yoda"})
+
+;; get by key-value
+(mentors :luke) ; "yoda"
+
+;; merge two maps
+(merge {:y-wing 2, :x-wing 4} {:tie-fighter 2}) ; {:tie-fighter 2, :y-wing 2, :x-wing 4}
+
+;; merge specifying an operator to use when the hash already exists
+(merge-with + {:y-wing 2, :x-wing 4} {:tie-fighter 2 :x-wing 3}) ; {:tie-fighter 2, :y-wing 2, :x-wing 7}
+
+;; create a new map adding an element to an existing one
+(assoc {:one 1} :two 2) ; {:two 2, :one 1}
+```
