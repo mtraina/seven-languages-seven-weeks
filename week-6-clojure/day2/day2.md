@@ -11,3 +11,12 @@ The following function calculate recursively the size of a sequence: if the list
 ;; call size  
 (size [1 2 3])
 ```
+### Tail recursion optimization
+Recursively call a function can end up consuming all the stack, to avoid this functional languages use a concept called **tail recursive optimization**. In Clojure it is not implicit but you can explicitly recur using the construct **loop** and **recur**.
+
+#### Loop
+Loop binds the 
+```clojure
+(loop [x x-initial-value, y y-initial-value]
+  (do-something-with x y))
+```
