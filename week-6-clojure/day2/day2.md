@@ -15,7 +15,7 @@ The following function calculate recursively the size of a sequence: if the list
 Recursively call a function can end up consuming all the stack, to avoid this functional languages use a concept called **tail recursive optimization**. In Clojure it is not implicit but you can explicitly recur using the construct **loop** and **recur**.
 
 #### Loop
-Loop binds the 
+Loop binds the variables in the even position to the values in the odd positions.
 ```clojure
 (loop [x x-initial-value, y y-initial-value]
   (do-something-with x y))
