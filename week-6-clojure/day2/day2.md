@@ -51,3 +51,13 @@ Filter returns only the elements of a sequence that satisfy the predicate.
 ;; filter only the words longer than 4 characters
 (filter (fn [word] (> (count word) 4)) words)
 ```
+
+#### Map
+Map applies a function on all the elements of a sequence and return the result.
+
+```clojure
+;; map the square root of the elements of a sequence
+(map (fn [x] (* x x)) [1 1 2 3 5]) % (1 1 4 9 25)
+```
+
+#### List comprehension
