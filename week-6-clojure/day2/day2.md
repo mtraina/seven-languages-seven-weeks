@@ -166,3 +166,9 @@ Let's calculate the Fibonacci sequence using the methods we introduced before.
 (first
 (iterate fib-pair [1 1]))) ; (1 1 2 3 5)
 ```
+
+##### Factorial example
+Similarly to the Fibonacci example we can calculate the factorial.
+```clojure
+(defn factorial [n] (apply * (take n (iterate inc 1))))
+```
