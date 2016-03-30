@@ -97,3 +97,16 @@ We can sort using the natural comparator or a custom defined one.
 
 (sort-by abs [-1 -4 3 2]) ; (-1 2 3 -4)
 ```
+
+### Lazy evaluation
+An infinite sequence can be described in **Clojure** using lazy evaluation: in this way the sequence library computes the values only when they are actually consumed.
+
+#### Range
+A range creates a sequence with the upper bound not included.
+
+```clojure
+(range 1 10) ; (1 2 3 4 5 6 7 8 9)
+
+;; range with increment
+(range 1 10 3) ; (1 4 7)
+```
