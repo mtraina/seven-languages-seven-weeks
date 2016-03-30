@@ -101,7 +101,7 @@ We can sort using the natural comparator or a custom defined one.
 ### Lazy evaluation
 An infinite sequence can be described in **Clojure** using lazy evaluation: in this way the sequence library computes the values only when they are actually consumed.
 
-#### Finite sequence with Range
+#### Finite sequence with range
 A range creates a sequence with the upper bound not included.
 
 ```clojure
@@ -112,3 +112,32 @@ A range creates a sequence with the upper bound not included.
 ```
 
 #### Infinite sequences and take
+We'll introduce now infinite sequences.  
+Repeat creates an infinite sequence of one element: we use take to get a finite part of it.
+
+```clojure
+(take 3 (repeat "Use the Force, Luke"))
+; ("Use the Force, Luke" "Use the Force, Luke" "Use the Force, Luke")
+```
+
+Cycle repeats the element of a list.
+
+```clojure
+(take 5 (cycle [:lather :rinse :repeat]))
+; (:lather :rinse :repeat :lather :rinse)
+```
+
+Drop discards the desired number of elements. In this case we are applying the functions inside out.
+
+```clojure
+(take 5 (drop 2 (cycle [:lather :rinse :repeat])))
+; (:repeat :lather :rinse :repeat :lather)
+```
+
+##### Left-to-right operator (->>)
+For applying the functions from left to right we can use the **->>** operator. In this example we'll get the same result as the **drop** one
+
+```clojure
+(->> [:lather :rinse :repeat] (cycle) (drop 2) (take 5))
+; (:repeat :lather :rinse :repeat :lather)
+```
