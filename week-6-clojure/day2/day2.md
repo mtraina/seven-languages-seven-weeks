@@ -101,7 +101,7 @@ We can sort using the natural comparator or a custom defined one.
 ### Lazy evaluation
 An infinite sequence can be described in **Clojure** using lazy evaluation: in this way the sequence library computes the values only when they are actually consumed.
 
-#### Range
+#### Finite sequence with Range
 A range creates a sequence with the upper bound not included.
 
 ```clojure
@@ -110,3 +110,5 @@ A range creates a sequence with the upper bound not included.
 ;; range with increment
 (range 1 10 3) ; (1 4 7)
 ```
+
+#### Infinite sequences and take
