@@ -141,3 +141,28 @@ For applying the functions from left to right we can use the **->>** operator. I
 (->> [:lather :rinse :repeat] (cycle) (drop 2) (take 5))
 ; (:repeat :lather :rinse :repeat :lather)
 ```
+
+##### Iterate
+Iterate takes a function and a starting value and applies repeatedly the former to the latter.
+
+```clojure
+(take 5 (iterate inc 1)) ; (1 2 3 4 5)
+```
+
+##### Fibonacci example
+Let's calculate the Fibonacci sequence using the methods we introduced before.
+* Let's first create a function that destructures a vector of two and returns the next pair of value in the Fibonacci sequence.
+* The next step is to use **iterate** to crete an infinite sequence of Fibonacci values.
+* Then we use **map** and **first** to get only the first element of the vector returned from the function.
+* At the end we use **take** to get only 5 elements from the infinite sequence of Fibonacci.
+
+```clojure
+;; define a Fibonacci function
+(defn fib-pair [[a b]]  [b (+ a b)])
+
+;; combine the functions together to get the first 5 elements
+(take 5
+(map
+(first
+(iterate fib-pair [1 1]))) ; (1 1 2 3 5)
+```
