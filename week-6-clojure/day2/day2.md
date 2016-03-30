@@ -77,3 +77,23 @@ This syntactic construct that combines multiple list and filters, taking the pos
 (for [x colors, y toys, :when (small-word? y)]
   (str "I like " x " " y "s")) ; ("I like red cars" "I like blue cars")
 ```
+
+#### Reduce
+It is the equivalent of the fold left operation saw in other languages.
+
+```clojure
+(reduce + [1 2 3 4]) ; 10
+```
+
+#### Sort
+We can sort using the natural comparator or a custom defined one.
+
+```clojure
+;; natural sorting
+(sort [3 1 2 4]) ; (1 2 3 4)
+
+;; custom sorting, by absolute value
+(defn abs [x] (if (< x 0) (- x) x))
+
+(sort-by abs [-1 -4 3 2]) ; (-1 2 3 -4)
+```
