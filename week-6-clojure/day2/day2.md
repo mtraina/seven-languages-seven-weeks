@@ -61,3 +61,19 @@ Map applies a function on all the elements of a sequence and return the result.
 ```
 
 #### List comprehension
+This syntactic construct that combines multiple list and filters, taking the possible combinations of the list and applying the filters.
+
+```clojure
+;; define the colors vector
+(def colors ["red" "blue"])
+
+;; define the toys vector
+(def toys ["block" "car"])
+
+;; create a filter for words shorter than 5 characters
+(defn small-word? [w] (< (count w) 4))
+
+;; iterate the sequences and apply the filter using "when"
+(for [x colors, y toys, :when (small-word? y)]
+  (str "I like " x " " y "s")) ; ("I like red cars" "I like blue cars")
+```
