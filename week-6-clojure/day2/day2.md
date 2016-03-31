@@ -218,3 +218,28 @@ Being a compass with 4 positions defined in a structure called **directions**, e
 ;; check that the original compass c didn't change (it's immutable)
 c ; #user.SimpleCompass{:bearing 0}
 ```
+
+## Macros
+Macros are a powerful way to extend the compiler with user code. Macros can be used to define syntactic constructs [Macros](http://clojure.org/reference/macros).
+A command called **macroexpand** can describe what the macro is going to do: the function to expand has to be commented to avoid the early evaluation of it.
+
+```clojure
+(macroexpand ''something-we-do-not-want-interpreted) ; (quote something-we-do-not-want-interpreted)
+(macroexpand '#(count %)) ; (fn* [p1__97] (count p1__97))
+```
+
+Macro expansion let you treat code like lists.  
+Let's now define a macro called **unless** that executes a function only when a test is false: test and function will be passed as parameters.
+
+```clojure
+;; define the macro called unless
+(defmacro unless [test body]
+  (list 'if (list 'not test) body))
+
+;; expand the macro
+(macroexpand '(unless condition body)) ; (if (not condition) body)
+
+;; execute the macro
+(unless true (println "No more danger, Will.")) ; nil
+(unless false (println "Now, THIS is The FORCE.")) ; Now, THIS is The FORCE.
+```
