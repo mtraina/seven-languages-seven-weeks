@@ -172,3 +172,41 @@ Similarly to the Fibonacci example we can calculate the factorial.
 ```clojure
 (defn factorial [n] (apply * (take n (iterate inc 1))))
 ```
+
+## Records and protocols
+Protocols define abstractions, for example a compass can be described with few functions like direction, left, right.  
+Record is used to define the implementation of the protocol, the compass in this case.  
+Turn is a function that takes a base, the position where the compass is initially, and an amount, the entity of the movement, and it returns the new position where the compass will be.  
+Being a compass with 4 positions defined in a structure called **directions**, every 4 movements it will resets to the original position.
+
+```clojure
+;; define the protocol
+(defprotocol Compass
+  (direction [c])
+  (left [c])
+  (right [c]))
+
+;; define the directions vector
+(def directions [:north :east :south :west])
+
+;; create the function that describe how turn works
+(defn turn
+  [base amount]
+  (rem (+ base amount) (count directions)))
+
+; START:defrecord
+(defrecord SimpleCompass [bearing]
+  Compass
+  ; END:defrecord
+  ; START:directionfunction
+  (direction [_] (directions bearing))
+  ; END:directionfunction
+  ; START:leftandright
+  (left [_] (SimpleCompass. (turn bearing 3)))
+  (right [_] (SimpleCompass. (turn bearing 1)))
+  ; END:leftandright
+  ; START:object
+  Object
+  (toString [this] (str "[" (direction this) "]")))
+  ; END:object
+```
