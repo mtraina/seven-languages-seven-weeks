@@ -194,19 +194,27 @@ Being a compass with 4 positions defined in a structure called **directions**, e
   [base amount]
   (rem (+ base amount) (count directions)))
 
-; START:defrecord
+;; create the implementation of the protocol
 (defrecord SimpleCompass [bearing]
+  ;; implement the functions of Compass
   Compass
-  ; END:defrecord
-  ; START:directionfunction
   (direction [_] (directions bearing))
-  ; END:directionfunction
-  ; START:leftandright
   (left [_] (SimpleCompass. (turn bearing 3)))
   (right [_] (SimpleCompass. (turn bearing 1)))
-  ; END:leftandright
-  ; START:object
+
+  ;; implement a to string function overriding the one provided by Java
   Object
   (toString [this] (str "[" (direction this) "]")))
-  ; END:object
+
+;; create a compass pointing north
+(def c (SimpleCompass. 0)) ; #user.SimpleCompass{:bearing 0}
+
+;; check its direction
+(direction c) ; :north
+
+;; move 90 degree to the left
+(left c) ; #user.SimpleCompass{:bearing 3}
+
+;; check that the original compass c didn't change (it's immutable)
+c ; #user.SimpleCompass{:bearing 0}
 ```
