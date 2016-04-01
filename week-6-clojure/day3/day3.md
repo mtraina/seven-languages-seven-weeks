@@ -17,3 +17,25 @@ movie ; #object[clojure.lang.Ref 0x66cf19bb {:status :ready, :val "Star Wars"}]
 ;; same as above, just a short form
 @movie ; "Star Wars"
 ```
+
+If we try to change the value of the reference we'll receive an error due to the fact that no transaction is running.
+
+```clojure
+(alter movie str ": The Empire Strikes Back")
+; IllegalStateException No transaction running  clojure.lang.LockingTransaction.getEx (LockingTransaction.java:208)
+```
+
+Let's then alter the reference within a transaction using the **dosync** command.
+
+```clojure
+;; prepend a string to the value of the reference
+(dosync (alter movie str ": The Empire Strikes Back"))
+; "Star Wars: The Empire Strikes Back"
+
+;; replace the value of the reference with a new one
+(dosync (ref-set movie "Star Wars: The Revenge of the Sith"))
+; "Star Wars: The Revenge of the Sith"
+
+;; check that the value of the reference changed
+@movie ; "Star Wars: The Revenge of the Sith"
+```
