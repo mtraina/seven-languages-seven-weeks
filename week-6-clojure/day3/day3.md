@@ -39,3 +39,45 @@ Let's then alter the reference within a transaction using the **dosync** command
 ;; check that the value of the reference changed
 @movie ; "Star Wars: The Revenge of the Sith"
 ```
+
+## Atoms
+Atoms provide a way to manage changes that don't have to be coordinated. They don't need to manage transactions for this.
+
+```clojure
+(def danger (atom "Split at your own risk.")) ; 'user/danger
+
+danger ; object[clojure.lang.Atom 0x7e437a2e {:status :ready, :val "Split at your own risk."}]
+
+(reset! danger "Split with impunity")
+```
+
+### Cache built with Atom
+A cache is a perfect fit for atoms. In the following example we define a namespace, a function for creating the cache, another for getting from it. The last function we define is related to a **put** with two different implementation, using **arity overloading**, meaning the implementation is selected depending of the number of the parameters passed to the function.
+
+```clojure
+;; namespace
+(ns solutions.atom-cache
+  (:refer-clojure :exclude [get]))
+
+;; create cache function
+(defn create
+  []
+  (atom {}))
+
+;; get from cache function
+(defn get
+  [cache key]
+  (@cache key))
+
+;; put to cache function
+(defn put
+  ([cache value-map]
+     (swap! cache merge value-map))
+  ([cache key value]
+     (swap! cache assoc key value)))
+
+;; usage sample
+(def ac (create))
+(put ac :quote "I'm your father, Luke.")
+(println (str "Cached item: " (get ac :quote)))
+```
