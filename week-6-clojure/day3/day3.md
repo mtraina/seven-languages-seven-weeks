@@ -99,3 +99,15 @@ We are going to show now an usage of agents: we first create a function that ret
 ;; get the value from the agent
 @tribbles ; 2
 ```
+
+## Futures
+Futures are used for manage a, perhaps expensive, computation and not waiting for the result. A future will start this computation and return right away so we can continue with the flow of our program. Whenever the computation will end, the future will contain the result of it.  
+In the following example we create a future that will return a string after 5 seconds. When we'll try to read the value of the future, we'll need to wait until the computation, that, as said, takes 5 seconds, finishes.
+
+```clojure
+;; create future
+(def finer-things (future (Thread/sleep 5000) "take time"))
+
+;; get the value of the future
+@finer-things ; after 5 seconds, "take time"
+```
