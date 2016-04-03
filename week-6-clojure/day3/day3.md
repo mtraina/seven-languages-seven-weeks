@@ -41,7 +41,7 @@ Let's then alter the reference within a transaction using the **dosync** command
 ```
 
 ## Atoms
-Atoms provide a way to manage changes that don't have to be coordinated. They don't need to manage transactions for this.
+Atoms provide a way to manage changes that don't have to be coordinated. They don't need to manage transactions for this. Atoms are ***synchronous***.
 
 ```clojure
 (def danger (atom "Split at your own risk.")) ; 'user/danger
@@ -77,7 +77,25 @@ A cache is a perfect fit for atoms. In the following example we define a namespa
      (swap! cache assoc key value)))
 
 ;; usage sample
-(def ac (create))
-(put ac :quote "I'm your father, Luke.")
-(println (str "Cached item: " (get ac :quote)))
+(def ac (create)) ; 'solutions.atom-cache/ac
+(put ac :quote "I'm your father, Luke.") ; {:quote "I'm your father, Luke."}
+(println (str "Cached item: " (get ac :quote))) ; Cached item: I'm your father, Luke.
+```
+
+## Agents
+Agents are similar to Atoms but they are ***asynchronous***. Users can mutate the data of an agent asynchronously using functions and the updates will occur in another thread, when the data will be available.  
+We are going to show now an usage of agents: we first create a function that returns the double of the value passed in. Then we define an agent, called ***tribbles*** with initial value of 1. Later we mutate the agent sending the function to the agent: this function will run in a different thread.
+
+```clojure
+;; function that doubles the value of the parameter
+(defn twice [x] (* 2 x)) ; 'user/twice
+
+;; define an agent with initial value
+(def tribbles (agent 1)) ; 'user/tribbles
+
+;; send the function to the agent
+(send tribbles twice) ; object[clojure.lang.Agent 0x759de027 {:status :ready, :val 2}]
+
+;; get the value from the agent
+@tribbles ; 2
 ```
