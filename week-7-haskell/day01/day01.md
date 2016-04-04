@@ -87,3 +87,17 @@ module Main where
     double :: Integer -> Integer
     double x = x + x
 ```
+
+### Recursion
+We now present some functions using recursion. The first is the factorial, it is using pattern matching.
+
+```haskell
+-- factorial definition
+module Main where
+  factorial :: Integer -> Integer
+  factorial 0 = 1
+  factorial x = x * factorial (x - 1)
+
+-- execution
+factorial 3 -- 6
+```
