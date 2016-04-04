@@ -68,3 +68,14 @@ double 2 -- 4
 
 ## Functions
 Functions are the foundations of the programming paradigm of Haskell. We specify functions is two parts: an optional type specification and an implementation.
+
+We define a function in a separate file, ***double.hs*** and load it into the console. The file defines a ***module*** that is a way in Haskell to collect related code into similar scope.
+
+```haskell
+-- load the module
+load day01/double.hs
+-- [1 of 1] Compiling Main             ( day01/double.hs, interpreted )
+
+-- execute the function
+double 5 -- 10
+```
