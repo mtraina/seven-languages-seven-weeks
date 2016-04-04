@@ -79,3 +79,11 @@ load day01/double.hs
 -- execute the function
 double 5 -- 10
 ```
+
+In the file ***double.hs*** we only defined the implementation without the (optional) type: the following definition is the complete one.
+
+```haskell
+module Main where
+    double :: Integer -> Integer
+    double x = x + x
+```
