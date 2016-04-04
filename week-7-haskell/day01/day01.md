@@ -92,7 +92,7 @@ module Main where
 We now present some functions using recursion. The first is the factorial, it is using pattern matching.
 
 ```haskell
--- factorial definition
+-- factorial definition (factorial.hs)
 module Main where
   factorial :: Integer -> Integer
   factorial 0 = 1
@@ -100,4 +100,15 @@ module Main where
 
 -- execution
 factorial 3 -- 6
+```
+
+It is possible to use guards inside the pattern matching to check some conditions.
+
+```haskell
+-- factorial with guard (factorial_with_guard.hs)
+module Main where
+  factorial :: Integer -> Integer
+  factorial x
+      | x > 1 = x * factorial(x -1)
+      | otherwise = 1
 ```
