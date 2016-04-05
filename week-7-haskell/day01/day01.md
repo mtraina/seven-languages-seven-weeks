@@ -251,3 +251,16 @@ In the next example we assume we have a polygon defined as a list of three point
 -- flip horizontally the poligon
 [(4 - x, y) | (x,y) <- [(1,2), (2,3), (3,1)]] -- [(3,2),(2,3),(1,1)]
 ```
+
+It is easily possible to compute combinations. In the following example we create a list and we create all the combinations of couple of elements where the elements are not repeated. We can also create a sorted list of elements where the combinations that don't satisfy the sorting condition are just discarded.
+
+```haskell
+-- define a list
+let crew = ["Kirk", "Spock", "McCoy"]
+
+-- combine the list where elements are different
+[(a, b) | a <- crew, b <- crew, a /= b]
+
+-- combine the list sorted
+[(a, b) | a <- crew, b <- crew, a < b]
+```
