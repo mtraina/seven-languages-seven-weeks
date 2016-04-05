@@ -222,3 +222,17 @@ allEven [1,2] -- [2]
 allEven [0,1,2,33,34] -- [0,2,34]
 allEven [] -- []
 ```
+
+#### Range
+Haskell includes first-class ranges and some syntactic sugar to support them. The default increment in Haskell is +1. If we pass a range that has a different increment (or decrement) we must pass the value of the second element of the range so Haskell can calculate the increment.
+
+```haskell
+-- range with default increment
+[1..4] -- [1,2,3,4]
+
+-- range that Haskell can't understand
+[10..4] -- []
+
+-- range with two initial elements
+[10, 8 .. 4] -- [10,8,6,4]
+```
