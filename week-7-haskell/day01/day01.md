@@ -236,3 +236,18 @@ Haskell includes first-class ranges and some syntactic sugar to support them. Th
 -- range with two initial elements
 [10, 8 .. 4] -- [10,8,6,4]
 ```
+
+#### List comprehension
+To define list comprehension we specify an expression on the left side and we use generators and filters on the right side.
+
+```haskell
+-- double the elements of the list
+[x * 2 | x <- [1, 2, 3]] -- [2,4,6]
+```
+
+In the next example we assume we have a polygon defined as a list of three points and we create a function that flips the polygon horizontally.
+
+```haskell
+-- flip horizontally the poligon
+[(4 - x, y) | (x,y) <- [(1,2), (2,3), (3,1)]] -- [(3,2),(2,3),(1,1)]
+```
