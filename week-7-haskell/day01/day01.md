@@ -178,3 +178,22 @@ module Main where
 
 fib 100 -- 354224848179261915075
 ```
+
+## Lists
+Lists can be easily bind as head-tail structure: using this construct we can easily do recursive operations on the elements of the list.
+
+```haskell
+-- define the functions (lists.hs)
+module Main where
+  size [] = 0
+  size (h:t) = 1 + size t
+
+  prod [] = 1
+  prod (h:t) = h * prod t
+
+-- calculate the size of the list
+size[1,2,3,4] -- 4
+
+-- calculate the product of the elements of the list
+prod[1,2,3,4] -- 24
+```
