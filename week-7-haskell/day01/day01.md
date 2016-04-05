@@ -112,3 +112,16 @@ module Main where
       | x > 1 = x * factorial(x -1)
       | otherwise = 1
 ```
+
+## Tuples and lists
+Haskell depends on tail-recursion optimization to deal with recursion.  
+Let's now implements a Fibonacci sequence with pattern matching.
+
+```haskell
+-- fibonacci (fib.hs)
+module Main where
+  fib :: Integer -> Integer
+  fib 0 = 1
+  fib 1 = 1
+  fib x = fib (x - 1) + fib (x - 2)
+```
