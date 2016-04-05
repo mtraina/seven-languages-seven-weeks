@@ -113,7 +113,7 @@ module Main where
       | otherwise = 1
 ```
 
-## Tuples and lists
+## Tuples
 Haskell depends on tail-recursion optimization to deal with recursion.  
 Let's now implements a Fibonacci sequence with pattern matching.
 
@@ -145,5 +145,36 @@ module Main where
   fib x = fibResult (fibTuple (0, 1, x))
 
 -- execution
+fib 100 -- 354224848179261915075
+```
+
+The calculation of the value, now, is much faster then the previous one.
+
+### Composition
+We can chain function together, so the result of one is passed to the other and get the combined result back. For example the function **second** concatenates head and tail, so the result will be the head of the tail of a passed data structure.
+
+```haskell
+-- function definition
+let second = head . tail
+
+-- execution
+second [1, 2, 3, 4] -- 2
+second [1] -- *** Exception: Prelude.head: empty list
+```
+
+Let's reimplement the Fibonacci series calculator using function composition: the function **fib** is in this case just returning the first element of the tuple returned from the function **fibNthPair**.
+
+```haskell
+module Main where
+  fibNextPair :: (Integer, Integer) -> (Integer, Integer)
+  fibNextPair (x, y) = (y, x + y)
+
+  fibNthPair :: Integer -> (Integer, Integer)
+  fibNthPair 1 = (1, 1)
+  fibNthPair n = fibNextPair (fibNthPair (n - 1))
+
+  fib :: Integer -> Integer
+  fib = fst . fibNthPair
+
 fib 100 -- 354224848179261915075
 ```
