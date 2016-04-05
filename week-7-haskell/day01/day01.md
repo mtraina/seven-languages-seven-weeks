@@ -125,3 +125,25 @@ module Main where
   fib 1 = 1
   fib x = fib (x - 1) + fib (x - 2)
 ```
+
+The code is simple to read but inefficient, for numbers greater than 30, the computation takes too long.
+
+Tuples permit to have a more efficient implementation. The following example shows how to implement the Fibonacci series with tuples.
+The type definition accept a tuple of three elements as parameter and returns a tuple of three elements as result. The function named **fibTuple** calculated the value of the Fibonacci sequence and keeps track of the next value and index. The calculated value of Fibonacci is in the first position of the tuple, so per extract it we add a function, called **fibResult** that binds a tuple and returns only the first element. Then we create another method, called **fib**, that will invoke the previous two and this will be the method we will call from the module to start the computation.
+
+```haskell
+-- types and functions definition (fib_tuple.hs)
+module Main where
+  fibTuple :: (Integer, Integer, Integer) -> (Integer, Integer, Integer)
+  fibTuple (x, y, 0) = (x, y, 0)
+  fibTuple (x, y, index) = fibTuple (y, x + y, index - 1)
+
+  fibResult :: (Integer, Integer, Integer) -> Integer
+  fibResult (x, y, z) = x
+
+  fib :: Integer -> Integer
+  fib x = fibResult (fibTuple (0, 1, x))
+
+-- execution
+fib 100 -- 354224848179261915075
+```
