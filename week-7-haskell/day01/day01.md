@@ -197,3 +197,28 @@ size[1,2,3,4] -- 4
 -- calculate the product of the elements of the list
 prod[1,2,3,4] -- 24
 ```
+
+**Zip** is a useful way to combine lists.
+
+```haskell
+zip ["kirk", "spock"] ["enterprise", "reliant"] -- [("kirk","enterprise"),("spock","reliant")]
+```
+
+### Generating lists
+We are going to see some way to generate lists.
+
+#### Recursion
+In the next example we'll define a function that returns all the even value of a list passed as parameter.
+
+```haskell
+-- define the function (all_even.hs)
+module Main where
+  allEven :: [Integer] -> [Integer]
+  allEven [] = []
+  allEven (h:t) = if even h then h:allEven t else allEven t
+
+-- executions
+allEven [1,2] -- [2]
+allEven [0,1,2,33,34] -- [0,2,34]
+allEven [] -- []
+```
