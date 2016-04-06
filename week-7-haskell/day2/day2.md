@@ -69,3 +69,15 @@ module Main where
 -- take 5 from an infinite range
 take 5 (myRange 10 1) -- [10,11,12,13,14]
 ```
+
+Let's have a look to another example, here creating a Fibonacci sequence using lazy evaluation and composition. The function **lazyFib** is creating an infinite Fibonacci sequence starting from two elements of it. The function **fib** is starting the computation from the beginning. The last function, **fibNth** is taking x elements from the Fibonacci series, then dropping all the elements but the last, then return the head of that list, that is the Fibonacci number related to the parameter we passed to the function.
+
+```haskell
+-- lazy Fibonacci sequence (lazy_fib.hs)
+module Main where
+    lazyFib x y = x:(lazyFib y (x + y))
+
+    fib = lazyFib 1 1
+
+    fibNth x = head (drop (x - 1) (take (x) fib))
+```
