@@ -17,3 +17,12 @@ module Main where
   squareAll list = map square list
     where square x = x * x
 ```
+
+#### Filter
+Filter is testing the items in a list.
+
+```haskell
+filter odd [1, 2, 3, 4, 5] -- [1,3,5]
+```
+
+####
