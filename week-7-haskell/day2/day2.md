@@ -35,3 +35,25 @@ foldl (\x carryOver -> carryOver + x) 0 [1 .. 10] -- 55
 -- another way to express fold left
 foldl1 (+) [1 .. 10] -- 55
 ```
+
+#### Partially applied functions and Currying
+In Haskell every function has one parameter and it works like splitting functions with multiple arguments into multiple functions with a single argument and apply them sequentially.  
+Let's take for example a function that multiplies two number, called **prod**, first we first argument to it and we obtain a function that will multiply an argument, the second, for a defined one, the first. The next snippet will clarify this concept.
+
+```haskell
+-- define prod
+let prod x y = x * y
+
+-- check the type of prod
+:t prod -- prod :: Num a => a -> a -> a
+
+-- apply prod to two arguments
+prod 2 4 -- 8
+
+-- in Haskell will apply (prod 2) 4, like if it was the function 'double' defined below
+let double = prod 2
+:t double -- double :: Num a => a -> a
+double 4 -- 8
+```
+
+This process is named **Currying**.
