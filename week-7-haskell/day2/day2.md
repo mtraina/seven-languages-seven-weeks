@@ -81,3 +81,10 @@ module Main where
 
     fibNth x = head (drop (x - 1) (take (x) fib))
 ```
+
+At last we can see the application of a partial function to a lazy list. In this case we double the elements of an infinite list and we take few of the results, five for instance.
+
+```haskell
+-- take 5 elements from an infinite sequence and double them
+ take 5 (map (*2) [1 ..]) -- [2,4,6,8,10]
+```
