@@ -57,3 +57,15 @@ double 4 -- 8
 ```
 
 This process is named **Currying**.
+
+## Lazy evaluation
+Haskell uses lazy evaluation, so it is possible, for example, to create infinite lists. The next example shows a way to create one of this list accpeting a starting point and a step as parameters.
+
+```haskell
+-- range function (my_range.hs)
+module Main where
+    myRange start step = start:(myRange (start + step) step)
+
+-- take 5 from an infinite range
+take 5 (myRange 10 1) -- [10,11,12,13,14]
+```
