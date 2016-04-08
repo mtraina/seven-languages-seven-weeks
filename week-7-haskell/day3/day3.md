@@ -60,3 +60,4 @@ backwards ["a", "b", "c", "d"] -- ["d","c","b","a"]
 ```
 
 ### Recursive types
+We can have types that are recursive, for example the representation of a **tree**. A tree has its values on the leafs; a tree is then made by leafs and list of trees.
