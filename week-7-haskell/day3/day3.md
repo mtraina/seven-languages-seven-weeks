@@ -7,6 +7,7 @@ We then create a function that convert the ***Rank*** to a value and we define t
 The last function is going to translate a ***Card*** to its value.
 
 ```haskell
+-- define the functions to represent a deck of cards (backwards.hs)
 module Main where
   data Suit = Spades | Hearts
   data Rank = Ten | Jack | Queen | King | Ace
@@ -23,4 +24,22 @@ module Main where
 
   cardValue :: Card -> Integer
   cardValue (rank, suit) = value rank
+
+-- execution
+cardValue(Jack, Hearts) -- 2  
+```
+
+### Functions and polymorphism
+We can create a function that is polymorphic, meaning that can take any types. In the next snippet we show how to create a function that reverse a list and that can accept any kind of lists, as parameter.
+
+```haskell
+-- define the function to reverse a list (backwards.hs)
+module Main where
+  backwards :: [a] -> [a]
+  backwards [] = []
+  backwards (h:t) = backwards t ++ [h]
+
+-- executions
+backwards [1,2,3] -- [3,2,1]
+backwards ["a", "b", "c", "d"] -- ["d","c","b","a"]
 ```
