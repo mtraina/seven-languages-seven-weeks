@@ -2,7 +2,9 @@
 The Haskell's typesystem is one of its strongest features, allowing type inference.
 
 ### User defined types
-The use of the word **data** let us define our own types. For example we can represent a deck of cards defining the suit and the rank with all their possible values. ***Suit*** and ***Rank*** define few values and we describe a ***Card*** as a tuple of ***Rank*** and ***Suit*** and a ***Hand*** as a list of ***Cards***.
+The use of the word **data** let us define our own types. For example we can represent a deck of cards defining the suit and the rank with all their possible values. ***Suit*** and ***Rank*** define few values and we describe a ***Card*** as a tuple of ***Rank*** and ***Suit*** and a ***Hand*** as a list of ***Cards***.  
+We then create a function that convert the ***Rank*** to a value and we define those values ourselves, e.g, assigning the value 1 to the card ***Ten***.  
+The last function is going to translate a ***Card*** to its value.
 
 ```haskell
 module Main where
@@ -11,4 +13,14 @@ module Main where
 
   type Card = (Rank, Suit)
   type Hand = [Card]
+
+  value :: Rank -> Integer
+  value Ten = 1
+  value Jack = 2
+  value Queen = 3
+  value King = 4
+  value Ace = 5
+
+  cardValue :: Card -> Integer
+  cardValue (rank, suit) = value rank
 ```
