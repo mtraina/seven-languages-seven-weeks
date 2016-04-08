@@ -60,4 +60,34 @@ backwards ["a", "b", "c", "d"] -- ["d","c","b","a"]
 ```
 
 ### Recursive types
-We can have types that are recursive, for example the representation of a **tree**. A tree has its values on the leafs; a tree is then made by leafs and list of trees.
+We can have types that are recursive, for example the representation of a **tree**. A tree has its values on the leafs: a tree is then made by leafs and list of trees. Let's implement the tree and create few example with it.
+
+```haskell
+-- define a type Tree (tree.hs)
+module Main where
+  data Tree a = Children [Tree a] | Leaf a deriving (Show)
+
+-- create a tree with one leaf
+let leaf = Leaf 1
+leaf -- Leaf 1
+
+-- get the value via pattern matching
+let (Leaf value) = leaf
+leaf -- 1
+
+-- create a tree made by few lists of tree
+let tree = Children[Leaf 2, Children[Leaf 3, Leaf 4]]
+tree -- Children [Leaf 2,Children [Leaf 3,Leaf 4]]
+
+-- match tree as a children
+let (Children ch) = tree
+
+-- match a children as a list with head and tail
+let (fst:tail) = ch
+
+-- print the head
+fst -- Leaf 2
+
+-- print the tail
+tail -- [Children[Leaf 3, Leaf 4]]
+```
