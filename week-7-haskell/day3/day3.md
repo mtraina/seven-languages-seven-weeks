@@ -9,8 +9,8 @@ The last function is going to translate a ***Card*** to its value.
 ```haskell
 -- define the functions to represent a deck of cards (backwards.hs)
 module Main where
-  data Suit = Spades | Hearts
-  data Rank = Ten | Jack | Queen | King | Ace
+  data Suit = Spades | Hearts deriving (Show)
+  data Rank = Ten | Jack | Queen | King | Ace deriving (Show)
 
   type Card = (Rank, Suit)
   type Hand = [Card]
@@ -25,8 +25,23 @@ module Main where
   cardValue :: Card -> Integer
   cardValue (rank, suit) = value rank
 
--- execution
+-- print hearts
+Hearts -- Hearts
+
+-- get the value of the card
 cardValue(Jack, Hearts) -- 2  
+```
+
+Is worth noting that we need to derive the function **show** for printing the data types, otherwise we'll get an error.
+
+```haskell
+-- print hearts
+Hearts
+
+-- error
+<interactive>:163:1:
+    No instance for (Show Suit) arising from a use of ‘print’
+    In a stmt of an interactive GHCi command: print it
 ```
 
 ### Functions and polymorphism
@@ -43,3 +58,5 @@ module Main where
 backwards [1,2,3] -- [3,2,1]
 backwards ["a", "b", "c", "d"] -- ["d","c","b","a"]
 ```
+
+### Recursive types
