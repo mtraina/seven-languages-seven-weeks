@@ -67,6 +67,9 @@ We can have types that are recursive, for example the representation of a **tree
 module Main where
   data Tree a = Children [Tree a] | Leaf a deriving (Show)
 
+  depth (Leaf _) = 1
+  depth (Children c) = 1 + maximum (map depth c)
+
 -- create a tree with one leaf
 let leaf = Leaf 1
 leaf -- Leaf 1
@@ -90,4 +93,18 @@ fst -- Leaf 2
 
 -- print the tail
 tail -- [Children[Leaf 3, Leaf 4]]
+```
+
+The function **depth** is useful for calculating the depth of the tree. The first definition is trivial: a tree with only a leaf has depth equals to one. The second definition is less obvious, the computation will be one plus the maximum depth of all the lists contained in the children.
+
+```haskell
+-- depth of leaf
+depth leaf -- 1
+
+-- depth of tree
+depth tree -- 3
+
+-- definition of a tall tree and depth of it
+let tallTree = Children[Leaf 2, Children[Leaf 3, Leaf 4, Children[Leaf 5], Leaf 6]]
+depth tallTree -- 4
 ```
