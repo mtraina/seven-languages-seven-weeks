@@ -108,3 +108,17 @@ depth tree -- 3
 let tallTree = Children[Leaf 2, Children[Leaf 3, Leaf 4, Children[Leaf 5], Leaf 6]]
 depth tallTree -- 4
 ```
+
+### Classes
+Classes in Haskell have a different meaning than in an Object-Oriented language. In this case they serve the purpose of defining which operation can work with which input, i.e. you can sum integers but not booleans. A **class** provides some functions signatures and a **type** is an instance of a class if it supports all of them. Classes do support inheritance.  
+As an example, a type is an instance of the class **Eq** if it supports the functions that **Eq** provides. Here a definition of the class **Eq**.
+
+```haskell
+class Eq a where
+  (==), (/=) :: a -> a -> Bool
+
+    -- Minimal complete definition
+    -- (==) or (/=)
+  x /= y    = not(x == y)
+  x == y    = not(x /= y)
+```
