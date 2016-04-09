@@ -168,3 +168,9 @@ We are applying three functions in sequence that basically have the same inputs 
 ```haskell
 stagger(crawl(x)) into stagger(x) · crawl(x)
 ```
+
+### Components of a monad
+A monad has three basic things:
+* A type constructor that is based on some type of container, e.g. a variable, a list, anything that can hold a value. We use the container to hold a function.
+* A function named **return** that wraps the function and puts it into the container.
+* A bind function called **>>=** that unwraps a function: we'll use it to chain the functions together.
