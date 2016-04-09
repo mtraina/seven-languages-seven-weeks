@@ -124,6 +124,7 @@ class Eq a where
 ```
 
 ## Monads
+Monads lets us compose functions in ways that they have specific properties.
 
 ### The drunken pirate example
 A pirate is drunk and is making a treasure map. To get to the treasure he is moving with a series of staggers and crawls. We can describe this situation in an imperative and in a functional language and compare the two solutions.
@@ -138,4 +139,32 @@ def trasure_map(v)
   v = crawl(v)
   return v
 end
+```
+
+#### Functional solution
+We can code the solution in a functional way as shown below: the state of the variable stay immutable but it's hard to read because the sequence of the commands is inverted. We can then use **let** to chain the functions in the expected order, but it is still not nice to read.
+
+```haskell
+module Main where
+    stagger :: (Num t) => t -> t
+    stagger d = d + 2
+    crawl d = d + 1
+
+    -- function executions: inverted order!
+    treasureMap d =
+        crawl (
+        stagger (
+        stagger d))
+
+    -- using let we can specify the functions in the right order
+    letTreasureMap (v, d) = let d1 = stagger d
+                                d2 = stagger d1
+                                d3 = crawl d2
+                            in d3
+```
+
+We are applying three functions in sequence that basically have the same inputs and outputs, so it would be good to chain the functions together in a nice way like the following.
+
+```haskell
+stagger(crawl(x)) into stagger(x) · crawl(x)
 ```
