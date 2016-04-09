@@ -122,3 +122,20 @@ class Eq a where
   x /= y    = not(x == y)
   x == y    = not(x /= y)
 ```
+
+## Monads
+
+### The drunken pirate example
+A pirate is drunk and is making a treasure map. To get to the treasure he is moving with a series of staggers and crawls. We can describe this situation in an imperative and in a functional language and compare the two solutions.
+
+#### Imperative solution
+With an imperative language we can model the solution as a sequence of statements. Quite readable but the drawback is that we are mutating the variable **v**.
+
+```ruby
+def trasure_map(v)
+  v = stagger(v)
+  v = stagger(v)
+  v = crawl(v)
+  return v
+end
+```
