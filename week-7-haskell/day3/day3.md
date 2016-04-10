@@ -236,7 +236,8 @@ let cartesian (xs,ys) = do x <- xs; y <- ys; return (x,y)
 cartesian ([1..2], [3..4]) -- [(1,3),(1,4),(2,3),(2,4)]
 ```
 
-
+#### Password cracker
+Let's implement a simple password cracker where we just brute force the values from two lists. The password is hard coded in a function that returns a boolean related to the result of the match.
 
 ```haskell
 -- password cracker (password.hs)
