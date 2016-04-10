@@ -179,3 +179,24 @@ So for a monad m, some function f and a value v:
 * you should be able to create a monad, using a type constructor, that will work with some type that can hold a value.
 * you should be able to unwrap and wrap values without loos of information (m >>= return = m).
 * nesting bind functions should be the same as calling them sequentially.
+
+### Building a monad
+We need to define the components described, in our example we implement the drunken pirate example using a monad. In details:
+* *data Position t = Position t* is the type constructor
+* *stagger* and *crawl* are based on the type *Position* (the container)
+* *rtn* is the return function that simply gives back the value of the monad
+* *>>==* is the bind function: it is just call the associated function with the value of the monad
+
+Is worth noting that the name of the return and bind functions are different from the build in monad functions in Haskell (*return* and *>>=*) to avoid collisions.
+
+```haskell
+-- monad example (drunken_monad.hs)
+module Main where
+  data Position t = Position t deriving (Show)
+
+  stagger (Position d) = Position (d + 2)
+  crawl (Position d) = Position (d + 1)
+
+  rtn x = x
+  x >>== f = f x
+```
