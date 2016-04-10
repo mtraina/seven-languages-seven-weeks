@@ -252,9 +252,7 @@ module Main where
 ```
 
 ### Maybe monad
-The maybe monad is used to manage the failure of a function. An example of this problem is string search, where we return the index of a string: if the string is present, we return its index otherwise the type *Nothing*.
-
-The maybe monad is using the type **Just** to wrap a value or Nothing.
+The maybe monad is used to manage the failure of a function. An example of this problem is string search, where we return the index of a string: if the string is present, we return its index otherwise the type **Nothing**. The maybe monad is using the type **Just** to wrap a value or Nothing. Return is wrapping the result in **Just**. Binding is returning Nothing if there is no value of a function that returns the value if it is present.
 
 ```haskell
 -- maybe moand definition
