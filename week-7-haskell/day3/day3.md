@@ -216,3 +216,24 @@ module Main where
               let { backwards = reverse line } ;
               return ("Hello. Your name backwards is " ++ backwards)
 ```
+
+### Different computational strategies
+To every monad is associated a computational strategy. A list is in fact a monad instantiated using *[]* and having a bind function that concatenates all the elements contained. Its return function is wrapping the function in a list.
+
+```haskell
+instance Monad [] where
+  m >>= f = concatMap f m
+  return x = [x]
+```
+
+```haskell
+-- password cracker (password.hs)
+module Main where
+  crack = do x <- ['a'..'c'] ; y <- ['a'..'c'] ; z <- ['a'..'c'] ;
+             let { password = [x, y, z] } ;
+             if attempt password
+               then return (password, True)
+               else return (password, False)
+
+  attempt pw = if pw == "cab" then True else False
+```
