@@ -174,3 +174,8 @@ A monad has three basic things:
 * A type constructor that is based on some type of container, e.g. a variable, a list, anything that can hold a value. We use the container to hold a function.
 * A function named **return** that wraps the function and puts it into the container.
 * A bind function called **>>=** that unwraps a function: we'll use it to chain the functions together.
+
+So for a monad m, some function f and a value v:
+* you should be able to create a monad, using a type constructor, that will work with some type that can hold a value.
+* you should be able to unwrap and wrap values without loos of information (m >>= return = m).
+* nesting bind functions should be the same as calling them sequentially.
