@@ -226,6 +226,18 @@ instance Monad [] where
   return x = [x]
 ```
 
+An example of usage of the monad list is the follow, where we create combinations of values taken from two different lists.
+
+```haskell
+-- function definition
+let cartesian (xs,ys) = do x <- xs; y <- ys; return (x,y)
+
+-- execution
+cartesian ([1..2], [3..4]) -- [(1,3),(1,4),(2,3),(2,4)]
+```
+
+
+
 ```haskell
 -- password cracker (password.hs)
 module Main where
