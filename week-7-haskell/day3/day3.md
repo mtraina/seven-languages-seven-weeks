@@ -204,3 +204,15 @@ module Main where
 -- execution
 treasureMap (Position 0) -- Position 5
 ```
+
+### Do notation
+The do notation give us a bit of syntactic sugar and it is particularly useful to manage problems like I/O. In the next example we are using different monads in sequence using the do notation.
+
+```haskell
+-- do nation usage (io.hs)
+module Main where
+  tryIo = do  putStr "Enter your name: " ;
+              line <- getLine ;
+              let { backwards = reverse line } ;
+              return ("Hello. Your name backwards is " ++ backwards)
+```
