@@ -263,5 +263,3 @@ instance Monad Maybe where
     Nothing  >>= f = Nothing
     (Just x) >>= f = f x
 ```
-
-Let's take for example the we want to get the first paragraph of a web page: we need to get the HTML page, its body and first paragraph of the it.
