@@ -250,3 +250,20 @@ module Main where
 
   attempt pw = if pw == "cab" then True else False
 ```
+
+### Maybe monad
+The maybe monad is used to manage the failure of a function. An example of this problem is string search, where we return the index of a string: if the string is present, we return its index otherwise the type *Nothing*.
+
+The maybe monad is using the type **Just** to wrap a value or Nothing.
+
+```haskell
+-- maybe moand definition
+data Maybe a = Nothing | Just a
+
+instance Monad Maybe where
+    return         = Just
+    Nothing  >>= f = Nothing
+    (Just x) >>= f = f x
+```
+
+Let's take for example the we want to get the first paragraph of a web page: we need to get the HTML page, its body and first paragraph of the it.
