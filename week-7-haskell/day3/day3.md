@@ -145,6 +145,7 @@ end
 We can code the solution in a functional way as shown below: the state of the variable stay immutable but it's hard to read because the sequence of the commands is inverted. We can then use **let** to chain the functions in the expected order, but it is still not nice to read.
 
 ```haskell
+-- functional approach (drunken_pirate.hs)
 module Main where
     stagger :: (Num t) => t -> t
     stagger d = d + 2
@@ -190,7 +191,7 @@ We need to define the components described, in our example we implement the drun
 Is worth noting that the name of the return and bind functions are different from the build in monad functions in Haskell (*return* and *>>=*) to avoid collisions.
 
 ```haskell
--- monad example (drunken_monad.hs)
+-- monad approach (drunken_monad.hs)
 module Main where
   data Position t = Position t deriving (Show)
 
@@ -199,4 +200,7 @@ module Main where
 
   rtn x = x
   x >>== f = f x
+
+-- execution
+treasureMap (Position 0) -- Position 5
 ```
