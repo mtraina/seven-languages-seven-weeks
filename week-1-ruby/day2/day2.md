@@ -25,3 +25,14 @@ Hashes are collections of key-value pairs.
 numbers = {1 => 'one', 2 => 'two'}
 numbers[1]    # "one"
 ```
+
+### Code blocks and yield
+A code block is an anonymous function: you can pass it as a parameter to a function or a method.  
+We pass the code block *{puts 'hiya there, kiddo'}* to the method times of Fixnum.
+
+```ruby
+3.times {puts 'hiya there, kiddo'}  
+# hiya there, kiddo
+# hiya there, kiddo
+# hiya there, kiddo
+```
