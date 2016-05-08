@@ -47,7 +47,7 @@ ruby hello.rb   # hello, world
 ## Classes
 Ruby allows to create classes and defining object as instances of them. It does support single inheritance.  
 
-In the class *Tree*, the method initialize is called when the class is created whilst the methods *visit_all* and *visit* are methods exposed by the class. 
+In the class *Tree*, the method initialize is called when the class is created whilst the methods *visit_all* and *visit* are methods exposed by the class.
 
 ```ruby
 # define a class (03_tree.rb)
@@ -69,3 +69,6 @@ class Tree
   end
 end
 ```
+
+## Mixin
+Ruby uses modules for implementing a kind of multiple inheritance.
