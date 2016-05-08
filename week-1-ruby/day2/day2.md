@@ -36,3 +36,36 @@ We pass the code block *{puts 'hiya there, kiddo'}* to the method times of Fixnu
 # hiya there, kiddo
 # hiya there, kiddo
 ```
+
+### Running code from a file
+Simply save the code in a file with extension *rb* and run with the command *ruby*.
+
+```bash
+ruby hello.rb   # hello, world
+```
+
+## Classes
+Ruby allows to create classes and defining object as instances of them. It does support single inheritance.  
+
+In the class *Tree*, the method initialize is called when the class is created whilst the methods *visit_all* and *visit* are methods exposed by the class. 
+
+```ruby
+# define a class (03_tree.rb)
+class Tree
+  attr_accessor :children, :node_name
+
+  def initialize(name, children=[])
+    @children = children
+    @node_name = name
+  end
+
+  def visit_all(&block)
+    visit &block
+    children.each {|c| c.visit_all &block}
+  end
+
+  def visit(&block)
+    block.call self
+  end
+end
+```
