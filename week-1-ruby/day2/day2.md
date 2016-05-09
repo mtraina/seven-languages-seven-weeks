@@ -72,3 +72,35 @@ end
 
 ## Mixin
 Ruby uses modules for implementing a kind of multiple inheritance.
+
+```ruby
+# module definition (to_file.rb)
+module ToFile
+  def filename
+    "object_#{self.object_id}.txt"
+  end
+
+  def to_f
+    File.open(filename, 'w') {|f| f.write(to_s)}
+  end
+end
+```
+
+In this example we created a module named **ToFile** that expose a method that write the class to a file. Is worth noting that the method *to_f* is calling a method named *to_s* that does not exist in the **ToFile** module: it will be implemented by the user of the module.
+
+```ruby
+class Person
+  include ToFile
+  attr_accessor :name
+
+  def initialize(name)
+    @name = name
+  end
+
+  def to_s
+    name
+  end
+end
+```
+
+The class **Person** includes the module **ToFile** and it does implement the method *to_s* that will be, as stated before, called by the method *to_f* of **ToFile**.
